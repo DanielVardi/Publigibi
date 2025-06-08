@@ -1,0 +1,91 @@
+</section>
+
+  <section id="herois-brasil">
+    <h2>Super-Heróis do Brasil</h2>
+    <div class="carrossel" style="display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+      <button class="seta seta-direita btn">◀</button>
+      <div class="caixas" style="display: flex; gap: 1rem; flex-wrap: nowrap; overflow-x: auto; scroll-behavior: smooth;">
+        <div class="caixa-heroi">
+          <img src="img/artistas/heroi01-v1.jpg" alt="Herói 01" class="versao1">
+          <img src="img/artistas/heroi01-v2.jpg" alt="Herói 01 Hover" class="versao2">
+          <p>Herói 01</p>
+        </div>
+        <div class="caixa-heroi">
+          <img src="img/artistas/heroi02-v1.jpg" alt="Herói 02" class="versao1">
+          <img src="img/artistas/heroi02-v2.jpg" alt="Herói 02 Hover" class="versao2">
+          <p>Herói 02</p>
+        </div>
+        <div class="caixa-heroi">
+          <img src="img/artistas/heroi03-v1.jpg" alt="Herói 03" class="versao1">
+          <img src="img/artistas/heroi03-v2.jpg" alt="Herói 03 Hover" class="versao2">
+          <p>Herói 03</p>
+        </div>
+        <div class="caixa-heroi">
+          <img src="img/artistas/heroi04-v1.jpg" alt="Herói 04" class="versao1">
+          <img src="img/artistas/heroi04-v2.jpg" alt="Herói 04 Hover" class="versao2">
+          <p>Herói 04</p>
+        </div>
+      </div>
+      <button class="seta seta-esquerda btn">▶</button>
+    </div>
+  </section>
+
+  <section id="comicmaker">
+    <h2>ComicMaker</h2>
+    <p>Crie suas próprias histórias em quadrinhos com nossos personagens e ferramentas online.</p>
+    <a href="comicmaker.html" class="btn">Acessar ComicMaker</a>
+  </section>
+
+  <section id="leia-quadrinhos">
+    <h2>Leia Quadrinhos</h2>
+    <p>Explore aventuras incríveis diretamente em nosso leitor digital.</p>
+    <a href="leitor.html" class="btn">Abrir Leitor</a>
+  </section>
+
+  <section id="exposicao">
+    <h2>Exposição XR 360</h2>
+    <a href="xr360.html">
+      <img src="img/xr360-banner.jpg" alt="Exposição XR 360">
+    </a>
+  </section>
+
+  <section id="quem-somos">
+    <h2>Quem Somos</h2>
+    <p>Publigibi é uma editora independente que valoriza os heróis brasileiros e a arte sequencial como forma de expressão e transformação.</p>
+  </section>
+
+  <section id="contato">
+    <h2>Fale Conosco</h2>
+    <form action="#" method="post">
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" name="nome" required>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+      <label for="mensagem">Mensagem:</label>
+      <textarea id="mensagem" name="mensagem" rows="5"></textarea>
+      <button type="submit" class="btn">Enviar</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Publigibi. Todos os direitos reservados.</p>
+  </footer>
+<script>
+  const esquerda = document.querySelector('.seta-esquerda');
+  const direita = document.querySelector('.seta-direita');
+  const container = document.querySelector('.caixas');
+
+  let scrollPosition = 0;
+
+  direita.addEventListener('click', () => {
+    scrollPosition -= 260;
+    container.scrollTo({ left: scrollPosition, behavior: 'smooth' });
+  });
+
+  esquerda.addEventListener('click', () => {
+    scrollPosition += 260;
+    container.scrollTo({ left: scrollPosition, behavior: 'smooth' });
+  });
+</script>
+</body>
+</html>
