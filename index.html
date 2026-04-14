@@ -68,6 +68,7 @@
                 <button class="tab-btn" onclick="openMedia('read')"><i class="fas fa-book-open"></i> LEIA</button>
                 <button class="tab-btn" onclick="openMedia('podcast')"><i class="fas fa-podcast"></i> PODCAST</button>
                 <button class="tab-btn" onclick="openMedia('calendar')"><i class="far fa-calendar-alt"></i> CALENDÁRIO</button>
+                <button class="tab-btn tab-btn-live" onclick="irParaLive()"><i class="fas fa-circle" style="animation: blink 1s infinite; color: red;"></i> AO VIVO</button>
             </div>
 
             <div class="area-e-stage">
@@ -195,6 +196,20 @@
         </main>
 
         <aside class="area-f-sidebar-right">
+
+            <div class="instagram-widget">
+                <div class="insta-header">
+                    <i class="fab fa-instagram"></i>
+                    <span id="insta-usuario"></span>
+                </div>
+                <a id="insta-post-link" href="#" target="_blank" class="insta-post-btn">
+                    <i class="fab fa-instagram"></i> Ver último post
+                </a>
+                <a id="insta-perfil-link" href="#" target="_blank" class="insta-perfil-btn">
+                    Ver perfil completo
+                </a>
+            </div>
+
             <h3>MURAL DO OUVINTE</h3>
             <div class="chat-box">
                 <div class="chat-msg"><strong>Fã1:</strong> O site ficou incrível!</div>
@@ -216,6 +231,7 @@
     <script src="eventos.js"></script>
     <script src="tv_canais.js"></script>
     <script src="galeria.js"></script>
+    <script src="instagram.js"></script>
 
     <script>
         // --- GALERIA 2.0 (CATEGORIAS + SOCIAL) ---
@@ -391,6 +407,25 @@
         }
         window.selecionarMesViaDropdown = function(valor) { mesAtual = parseInt(valor); renderizarCalendario(mesAtual, anoAtual); }
 
+        // --- BOTAO AO VIVO ---
+        window.irParaLive = function() {
+            openMedia('video');
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelector('.tab-btn-live').classList.add('active');
+            setTimeout(() => mudarCanal('aovivo'), 100);
+        }
+
+        // --- INSTAGRAM WIDGET ---
+        function iniciarInstagram() {
+            if (typeof INSTAGRAM_USUARIO === 'undefined') return;
+            const elUsuario = document.getElementById('insta-usuario');
+            const elPost    = document.getElementById('insta-post-link');
+            const elPerfil  = document.getElementById('insta-perfil-link');
+            if (elUsuario) elUsuario.textContent = INSTAGRAM_USUARIO;
+            if (elPost)    elPost.href    = ULTIMO_POST_URL;
+            if (elPerfil)  elPerfil.href  = INSTAGRAM_PERFIL_URL;
+        }
+
         // --- INICIALIZAÇÃO GERAL ---
         document.addEventListener('DOMContentLoaded', () => {
             console.log("Publigibi System Online - Versão Modular (Gallery 2.0)");
@@ -436,10 +471,11 @@
                 }
             }, 4000);
 
+            iniciarInstagram();
             setTimeout(() => {
                 mudarCanal('gravado');
                 renderizarCalendario(mesAtual, anoAtual);
-                renderizarGaleria(); 
+                renderizarGaleria();
             }, 100);
         });
     </script>

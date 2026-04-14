@@ -166,3 +166,18 @@ body {
 }
 
 .fas, .fab { margin-right: 5px; }
+
+/* BOTAO AO VIVO */
+.tab-btn-live { color: #c00 !important; font-weight: bold; }
+.tab-btn-live.active { background-color: #c00 !important; color: #fff !important; }
+.tab-btn-live:hover { background-color: #ffd6d6 !important; }
+
+/* INSTAGRAM WIDGET */
+.instagram-widget { margin-bottom: 12px; border: 1px solid #ddd; border-radius: 8px; overflow: hidden; flex-shrink: 0; }
+.insta-header { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: #fff; padding: 7px 10px; display: flex; align-items: center; gap: 6px; font-size: 0.8rem; font-weight: bold; }
+.insta-header .fab { margin-right: 0; font-size: 1rem; }
+.insta-post-btn { display: block; background: #fff; color: #333; text-align: center; padding: 8px 5px; font-size: 0.78rem; font-weight: bold; text-decoration: none; border-bottom: 1px solid #eee; transition: 0.2s; }
+.insta-post-btn:hover { background: #fef3f8; color: #bc1888; }
+.insta-post-btn .fab { color: #bc1888; }
+.insta-perfil-btn { display: block; background: #fafafa; color: #888; text-align: center; padding: 5px; font-size: 0.72rem; text-decoration: none; transition: 0.2s; }
+.insta-perfil-btn:hover { color: #bc1888; background: #fef3f8; }
