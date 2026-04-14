@@ -197,26 +197,57 @@
 
         <aside class="area-f-sidebar-right">
 
-            <div class="instagram-widget">
-                <div class="insta-header">
+            <!-- INSTAGRAM -->
+            <div class="social-block social-block-insta">
+                <div class="social-block-header">
                     <i class="fab fa-instagram"></i>
                     <span id="insta-usuario"></span>
                 </div>
-                <a id="insta-post-link" href="#" target="_blank" class="insta-post-btn">
-                    <i class="fab fa-instagram"></i> Ver último post
-                </a>
-                <a id="insta-perfil-link" href="#" target="_blank" class="insta-perfil-btn">
-                    Ver perfil completo
+                <div class="social-block-body">
+                    <div class="fb-page"
+                        id="instagram-embed-area"
+                        style="width:100%; min-height:200px; display:flex; align-items:center; justify-content:center;">
+                        <a id="insta-post-link" href="#" target="_blank" class="social-follow-btn insta-btn">
+                            <i class="fab fa-instagram"></i> Ver posts no Instagram
+                        </a>
+                    </div>
+                </div>
+                <a id="insta-perfil-link" href="#" target="_blank" class="social-follow-link">
+                    Seguir @almanaquebrasileiro.mtl
                 </a>
             </div>
 
-            <h3>MURAL DO OUVINTE</h3>
-            <div class="chat-box">
-                <div class="chat-msg"><strong>Fã1:</strong> O site ficou incrível!</div>
-                <div class="chat-msg"><strong>Geek:</strong> Adorei o layout claro.</div>
-                <div class="chat-msg"><strong>Admin:</strong> Sejam bem vindos.</div>
-                <div class="chat-msg"><strong>Visitante:</strong> Cadê a HQ nova?</div>
+            <!-- FACEBOOK -->
+            <div class="social-block social-block-fb">
+                <div class="social-block-header">
+                    <i class="fab fa-facebook-f"></i>
+                    <span>Almanaque Brasileiro</span>
+                </div>
+                <div class="social-block-body" id="fb-embed-area">
+                    <div id="fb-page-plugin"></div>
+                </div>
+                <a id="fb-link" href="https://www.facebook.com/almanaquebrasileiro" target="_blank" class="social-follow-link">
+                    Curtir nossa página
+                </a>
             </div>
+
+            <!-- MURAL DO OUVINTE (area exclusiva - login futuro) -->
+            <div class="mural-locked">
+                <div class="mural-header">
+                    <h3><i class="fas fa-lock"></i> MURAL DO OUVINTE</h3>
+                    <p>Area exclusiva para ouvintes cadastrados</p>
+                </div>
+                <div class="chat-box">
+                    <div class="chat-msg"><strong>Fã1:</strong> O site ficou incrível!</div>
+                    <div class="chat-msg"><strong>Geek:</strong> Adorei o layout claro.</div>
+                    <div class="chat-msg"><strong>Admin:</strong> Sejam bem vindos.</div>
+                    <div class="chat-msg"><strong>Visitante:</strong> Cadê a HQ nova?</div>
+                </div>
+                <button class="btn-entrar-mural" onclick="alert('Em breve: área exclusiva para ouvintes!')">
+                    <i class="fas fa-sign-in-alt"></i> Entrar / Cadastrar
+                </button>
+            </div>
+
         </aside>
 
         <footer class="area-c-footer">
@@ -227,6 +258,10 @@
         </footer>
 
     </div>
+
+    <!-- Facebook SDK -->
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v19.0"></script>
 
     <script src="eventos.js"></script>
     <script src="tv_canais.js"></script>
@@ -426,6 +461,24 @@
             if (elPerfil)  elPerfil.href  = INSTAGRAM_PERFIL_URL;
         }
 
+        // --- FACEBOOK PAGE PLUGIN ---
+        function iniciarFacebook() {
+            const container = document.getElementById('fb-page-plugin');
+            if (!container) return;
+            container.innerHTML = `
+                <div class="fb-page"
+                    data-href="https://www.facebook.com/almanaquebrasileiro"
+                    data-tabs="timeline"
+                    data-width="260"
+                    data-height="200"
+                    data-small-header="true"
+                    data-adapt-container-width="true"
+                    data-hide-cover="false"
+                    data-show-facepile="false">
+                </div>`;
+            if (window.FB) FB.XFBML.parse(container);
+        }
+
         // --- INICIALIZAÇÃO GERAL ---
         document.addEventListener('DOMContentLoaded', () => {
             console.log("Publigibi System Online - Versão Modular (Gallery 2.0)");
@@ -472,6 +525,7 @@
             }, 4000);
 
             iniciarInstagram();
+            iniciarFacebook();
             setTimeout(() => {
                 mudarCanal('gravado');
                 renderizarCalendario(mesAtual, anoAtual);

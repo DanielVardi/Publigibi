@@ -26,7 +26,7 @@ body {
 .main-layout {
     display: grid; height: 100vh;
     grid-template-rows: 80px 1fr 80px; 
-    grid-template-columns: 240px 1fr 200px; 
+    grid-template-columns: 240px 1fr 280px;
     grid-template-areas: "header header header" "sideL  center sideR" "footer footer footer";
 }
 
@@ -118,10 +118,6 @@ body {
 @keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
 .counter-box { width: auto; min-width: 80px; padding: 0 10px; text-align: center; background: #ddd; color: var(--header-text-green); font-weight: bold; line-height: 40px;}
 
-.area-f-sidebar-right { grid-area: sideR; background-color: var(--bg-medium-gray); border-left: 2px solid var(--border-color); padding: 10px; display: flex; flex-direction: column; }
-.area-f-sidebar-right h3 { text-align: center; margin-bottom: 10px; font-size: 0.9rem; color: #555; border-bottom: 1px solid #ccc; padding-bottom: 5px; }
-.chat-box { flex-grow: 1; overflow-y: auto; font-size: 0.8rem; color: #333; }
-.chat-msg { border-bottom: 1px solid #ccc; padding-bottom: 4px; margin-bottom: 8px; }
 .area-c-footer { grid-area: footer; background-color: var(--light-yellow); display: flex; justify-content: space-between; align-items: center; padding: 0 20px; border-top: 2px solid var(--header-text-green); }
 .btn-affiliate-footer { background: #fff; color: #000; padding: 8px 15px; text-decoration: none; font-weight: bold; border-radius: 4px; border: 2px solid #000; box-shadow: 2px 2px 0px #000; font-size: 0.9rem; }
 .footer-center { background: #fff; color: #000; padding: 5px 20px; border-radius: 20px; border: 2px solid #000; font-weight: bold; }
@@ -166,6 +162,37 @@ body {
 }
 
 .fas, .fab { margin-right: 5px; }
+
+/* SIDEBAR DIREITA - SOCIAL BLOCKS */
+.area-f-sidebar-right { grid-area: sideR; background-color: var(--bg-medium-gray); border-left: 2px solid var(--border-color); display: flex; flex-direction: column; overflow-y: auto; overflow-x: hidden; }
+
+.social-block { flex-shrink: 0; display: flex; flex-direction: column; border-bottom: 2px solid var(--border-color); }
+.social-block-header { display: flex; align-items: center; gap: 8px; padding: 8px 10px; font-size: 0.82rem; font-weight: bold; color: #fff; }
+.social-block-header .fab { font-size: 1.1rem; margin-right: 0; }
+.social-block-body { padding: 8px; display: flex; align-items: center; justify-content: center; min-height: 180px; }
+.social-follow-link { display: block; text-align: center; padding: 6px; font-size: 0.72rem; text-decoration: none; font-weight: bold; transition: 0.2s; }
+
+.social-block-insta .social-block-header { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+.social-block-insta .social-follow-link { background: #fef3f8; color: #bc1888; }
+.social-block-insta .social-follow-link:hover { background: #fce4f3; }
+
+.social-block-fb .social-block-header { background: #1877f2; }
+.social-block-fb .social-follow-link { background: #e7f0fd; color: #1877f2; }
+.social-block-fb .social-follow-link:hover { background: #d0e4fb; }
+
+.social-follow-btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 20px; text-decoration: none; font-weight: bold; font-size: 0.8rem; transition: 0.2s; }
+.insta-btn { background: linear-gradient(45deg, #f09433, #dc2743, #bc1888); color: #fff; }
+.insta-btn:hover { opacity: 0.85; }
+
+/* MURAL DO OUVINTE (area exclusiva) */
+.mural-locked { flex-grow: 1; display: flex; flex-direction: column; padding: 10px; min-height: 0; }
+.mural-header { text-align: center; margin-bottom: 8px; }
+.mural-header h3 { font-size: 0.85rem; color: #555; padding-bottom: 4px; border-bottom: 1px solid #ccc; }
+.mural-header p { font-size: 0.7rem; color: #999; margin-top: 4px; }
+.chat-box { flex-grow: 1; overflow-y: auto; font-size: 0.78rem; color: #333; margin-bottom: 8px; }
+.chat-msg { border-bottom: 1px solid #eee; padding-bottom: 4px; margin-bottom: 6px; }
+.btn-entrar-mural { width: 100%; padding: 8px; background: var(--header-text-green); color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 0.8rem; font-weight: bold; transition: 0.2s; }
+.btn-entrar-mural:hover { background: #4a6330; }
 
 /* BOTAO AO VIVO */
 .tab-btn-live { color: #c00 !important; font-weight: bold; }
