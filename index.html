@@ -464,11 +464,29 @@
         function iniciarInstagram() {
             if (typeof INSTAGRAM_USUARIO === 'undefined') return;
             const elUsuario = document.getElementById('insta-usuario');
-            const elPost    = document.getElementById('insta-post-link');
             const elPerfil  = document.getElementById('insta-perfil-link');
+            const area      = document.getElementById('instagram-embed-area');
             if (elUsuario) elUsuario.textContent = INSTAGRAM_USUARIO;
-            if (elPost)    elPost.href    = ULTIMO_POST_URL;
-            if (elPerfil)  elPerfil.href  = INSTAGRAM_PERFIL_URL;
+            if (elPerfil)  elPerfil.href = INSTAGRAM_PERFIL_URL;
+
+            // Se tiver URL de post configurada, renderiza o embed oficial
+            if (area && ULTIMO_POST_URL && ULTIMO_POST_URL !== INSTAGRAM_PERFIL_URL) {
+                area.innerHTML = `
+                    <blockquote class="instagram-media"
+                        data-instgrm-permalink="${ULTIMO_POST_URL}"
+                        data-instgrm-version="14"
+                        style="background:#fff; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,.5); margin:0; max-width:320px; min-width:280px; padding:0; width:99.375%;">
+                    </blockquote>`;
+                // Carrega ou recarrega o script do Instagram
+                if (window.instgrm) {
+                    window.instgrm.Embeds.process();
+                } else {
+                    const s = document.createElement('script');
+                    s.async = true;
+                    s.src = '//www.instagram.com/embed.js';
+                    document.body.appendChild(s);
+                }
+            }
         }
 
         // --- FACEBOOK PAGE PLUGIN ---
