@@ -15,7 +15,7 @@ jobs:
       - name: Publicar no servidor via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ftp.hqbd.ca
+          server: almanaquebrasileiro.com.br
           username: Almanaque@almanaquebrasileiro.com.br
           password: ${{ secrets.FTP_PASS }}
           local-dir: ./
