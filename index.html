@@ -63,7 +63,8 @@
 
         <main class="area-center">
             <div class="media-tabs">
-                <button class="tab-btn active" onclick="openMedia('video')"><i class="fas fa-play"></i> ASSISTA</button>
+                <button class="tab-btn active" onclick="openMedia('destaque')"><i class="fas fa-star"></i> DESTAQUE</button>
+                <button class="tab-btn" onclick="openMedia('video')"><i class="fas fa-play"></i> ASSISTA</button>
                 <button class="tab-btn" onclick="openMedia('gallery')"><i class="fas fa-images"></i> GALERIA</button>
                 <button class="tab-btn" onclick="openMedia('read')"><i class="fas fa-book-open"></i> LEIA</button>
                 <button class="tab-btn" onclick="openMedia('podcast')"><i class="fas fa-podcast"></i> PODCAST</button>
@@ -73,7 +74,19 @@
 
             <div class="area-e-stage">
                 
-                <div id="content-video" class="media-content active-content">
+                <div id="content-destaque" class="media-content active-content">
+                    <div class="destaque-box">
+                        <img src="img/destaque_ludmila_diez.jpg" alt="Almanaque Brasileiro convida Ludimila Diez, do canal Jardineira Sapatão - Sexta 19h às 20h, Rádio Centre-Ville 102,3 FM" class="destaque-img">
+                        <div class="destaque-texto">
+                            <p><strong>É hoje, sexta-feira, 16 de outubro,</strong> a nossa entrevista com Ludimila Diez sobre o difícil momento que as comunidades LGBTQA+ estão vivendo no Brasil.</p>
+                            <p>Em defesa da nossa democracia e por mais respeito e empatia com as comunidades LGBTQA+.</p>
+                            <p>Acesse nosso site almanaquebrasileiro.com.br e clique no botão <strong>OUÇA AQUI</strong>.</p>
+                            <a href="#" class="btn-ouca-aqui" onclick="toggleRadio(event)"><i class="fas fa-headphones"></i> OUÇA AQUI</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="content-video" class="media-content">
                     <div class="podcast-header" style="background: #000; min-height: 100px; flex-direction: row; justify-content: space-between; padding: 0 20px;">
                         <div style="text-align:left;">
                             <h3 style="color:#fff; margin:0;"><i class="fas fa-tv" style="color:var(--primary-orange)"></i> TV ALMANAQUE</h3>
